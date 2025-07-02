@@ -1,5 +1,5 @@
 import time 
-from main import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer
 
 class TicTacToe:
     def __init__(self):
@@ -19,14 +19,14 @@ class TicTacToe:
             print(' | ' + ' | '.join(row) + ' | ')
 
     def available_moves(self):
-    # return []
-    # moves = []
-    # for (i, spot) in enumerate(self.board):
-    #     # ['x', 'x', 'o'] --> [(0, 'x'), (1, 'x'), (2, 'o')]
-    #     if spot == ' ':
-    #         moves.append(i)
-    # return moves
-    return [i for i, spot in enumerate(self.board) if spot == ' ']
+        # return []
+        # moves = []
+        # for (i, spot) in enumerate(self.board):
+        #     # ['x', 'x', 'o'] --> [(0, 'x'), (1, 'x'), (2, 'o')]
+        #     if spot == ' ':
+        #         moves.append(i)
+        # return moves
+        return [i for i, spot in enumerate(self.board) if spot == ' ']
 
     def empty_squares(self):
         return ' ' in self.board

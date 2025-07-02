@@ -1,6 +1,5 @@
 import time 
-import player
-from player import HumanPlayer, RandomComputerPlayer
+from main import HumanPlayer, RandomComputerPlayer
 
 class TicTacToe:
     def __init__(self):
@@ -15,7 +14,7 @@ class TicTacToe:
     @staticmethod
     def print_board_nums():
         # 0 | 1 | 2 etc (tells us what number corresponds to what box)
-        number_board = [[str(i) for i in range(j*3), (j+1)*3] for j in range(3)
+        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
         for row in number_board:
             print(' | ' + ' | '.join(row) + ' | ')
 
@@ -50,13 +49,13 @@ class TicTacToe:
         # first check row
         row_ind = square // 3
         row = self.board[row_ind*3 : (row_ind + 1) *3]
-        if all([spot == letter for spot in row])
+        if all([spot == letter for spot in row]):
             return True
 
         # check columns
         col_ind = square % 3
         column = [self.board[col_ind+i*3] for i in range(3)]
-        if all([spot == letter for spot in column])
+        if all([spot == letter for spot in column]):
             return True
 
         # check diagonals
@@ -64,10 +63,10 @@ class TicTacToe:
         # these are only moves possible to win diagonally
         if square % 2 == 0:
             diagonal1 = [self.board[i] for i in [0, 4, 8]] # left to right diagonal
-            if all([spot == letter for spot in diagonal1])
+            if all([spot == letter for spot in diagonal1]):
                 return True
             diagonal2 = [self.board[i] for i in [2, 4, 6]] # right to left diagonal
-            if all([spot == letter for spot in diagonal2])
+            if all([spot == letter for spot in diagonal2]):
                 return True
 
         # if all fails
